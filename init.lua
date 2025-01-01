@@ -20,6 +20,8 @@ vim.cmd([[
   augroup end
 ]])
 
+vim.cmd.colorscheme('tokyonight')
+
 require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,  -- Enable Treesitter-based highlighting
@@ -38,4 +40,24 @@ require'nvim-treesitter.configs'.setup {
         },
     },
 }
+
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        -- Add Ruff as a diagnostic (linter)
+        null_ls.builtins.diagnostics.ruff,
+        -- Optionally, add Ruff as a formatter
+        null_ls.builtins.formatting.ruff,
+    },
+})
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.py",
+    callback = function()
+        vim.lsp.buf.format({ async = false })
+    end,
+})
+require('nvim-autopairs').setup({
+    -- Add any custom configuration here, or leave empty for defaults
+})
 
