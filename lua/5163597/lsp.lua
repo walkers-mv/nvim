@@ -6,7 +6,6 @@ lspconfig.pyright.setup({
 })
 
 -- tsserver setup
-lspconfig.tsserver.setup({
-  -- settings = { ... } -- Optional TypeScript/JavaScript settings
-})
+require('lspconfig').ts_ls.setup{}
+
 
