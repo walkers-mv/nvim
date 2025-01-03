@@ -83,11 +83,6 @@ require('nvim-tree').setup {
   view = {
     width = 30,
     side = 'left',
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
   },
   renderer = {
     icons = {
@@ -102,4 +97,15 @@ require('nvim-tree').setup {
   filters = {
     dotfiles = true, -- Hide dotfiles by default
   },
+  on_attach = function(bufnr)
+    local api = require('nvim-tree.api')
+
+    local function opts(desc)
+      return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    -- Add your custom mappings
+    vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts('Go Up'))
+  end,
 }
+
