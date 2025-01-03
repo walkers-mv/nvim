@@ -35,8 +35,19 @@ return require('packer').startup(function(use)
       'hrsh7th/cmp-path'
     }
   }
-
-  -- More plugins go here...
+  use 'github/copilot.vim'
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+   -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional, for file icons
+  },
+}
+-- More plugins go here...
 end)
 
 

@@ -60,4 +60,47 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 require('nvim-autopairs').setup({
     -- Add any custom configuration here, or leave empty for defaults
 })
+require('telescope').setup {
+  defaults = {
+    file_ignore_patterns = {
+      "%.git/",    -- Ignore .git directory
+      "%.node_modules/", -- Ignore node_modules directory
+      "%.jpg",     -- Ignore .jpg files
+      "%.png",     -- Ignore .png files
+      "%.exe",     -- Ignore .exe files
+      "%.class",   -- Ignore .class files
+      "%.pyc",
+      "%.zip",
+      "%.bin",
+      "%.sqlite3",
+      "%.db",
+      "%.safetensors",
+      "%.pth"
+    },
+  },
+}
+require('nvim-tree').setup {
+  view = {
+    width = 30,
+    side = 'left',
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    icons = {
+      glyphs = {
+        folder = {
+          arrow_open = "▾",
+          arrow_closed = "▸",
+        },
+      },
+    },
+  },
+  filters = {
+    dotfiles = true, -- Hide dotfiles by default
+  },
+}
 

@@ -23,3 +23,13 @@ vim.api.nvim_set_keymap('v', 'ic', '<cmd>lua require"nvim-treesitter.textobjects
 vim.api.nvim_set_keymap('v', 'af', '<cmd>lua require"nvim-treesitter.textobjects.select".select("@function.outer")<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', 'if', '<cmd>lua require"nvim-treesitter.textobjects.select".select("@function.inner")<CR>', { noremap = true, silent = true })
 
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h', '<C-w>h', { noremap = true, silent = true }) -- Move left
+vim.api.nvim_set_keymap('n', '<leader>l', '<C-w>l', { noremap = true, silent = true }) -- Move right
+
