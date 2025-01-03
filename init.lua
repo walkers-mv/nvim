@@ -1,16 +1,16 @@
 -- init.lua:
 
 -- 1. Load core settings
-require('5163597.settings')
+require('config.settings')
 
 -- 2. Load keymaps
-require('5163597.keymaps')
+require('config.keymaps')
 
 -- 3. Load plugins
-require('5163597.plugins')
+require('config.plugins')
 
 -- init.lua
-require('5163597.lsp')
+require('config.lsp')
 
 -- Reload Neovim whenever you save plugins.lua
 vim.cmd([[
@@ -103,4 +103,3 @@ require('nvim-tree').setup {
     dotfiles = true, -- Hide dotfiles by default
   },
 }
-
